@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Light Bulb</title>
+		<style>
+			h1{
+				text-align:center;
+				color:red;
+			}
+			#b1{
+				color:green;
+			}
+			#b2{
+				color:red;
+			}	
+			img{
+				display:block;
+				margin:auto;
+			}			
+		</style>		
+		
+		<script>
+			function off()
+			{
+				
+				document.getElementById("bulb").src="Images/bulboff.jpg";
+			}
+			function on()
+			{
+				
+				document.getElementById("bulb").src="Images/bulbon.jpg";
+			}
+		</script>
+	</head>
+		
+	<body>
+		<h1>Light Bulb</h1>
+		
+		<img src="Images/bulboff.jpg" id="bulb" width="150">
+		
+		
+		<button id="b1" onclick="off()">OFF</button>	
+		<button id="b2" onclick="on()">ON</button>	
+	</body>
+</html>
+

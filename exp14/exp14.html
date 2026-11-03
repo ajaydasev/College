@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Image map </title>
+		<style>
+			img{
+				display:block;
+				margin:auto;
+				
+				}
+			h1{
+				text-align:center;
+			}
+		</style>
+						
+	</head>
+	<body>
+		<h1>Image Map</h1>
+		<img src="images/flower.jpg" alt="plant" usemap="#map" width="500px" height="350px">
+			
+			<map name="map">
+  
+			    <area shape="circle" coords="250,65,45" href="flower.html" onclick="showInfo('Flower'); return false;" alt="Flower">
+			    
+			    
+			   
+			    
+			  
+			 
+			<area shape="poly" coords="240,255, 260,255, 280,265, 330,295, 310,315, 275,315, 250,290, 225,315, 190,315, 170,295, 220,265" href="stem.html" onclick="showInfo('Roots'); return false;" alt="Roots">
+
+
+			    
+			</map>
+
+	</body>
+							
+</html>
+
+								

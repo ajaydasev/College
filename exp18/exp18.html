@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <input type="number" id="yearInput" value="2026">
+    <button onclick="generateCalendar()">Generate</button>
+    <div id="calendarContainer"></div>
+
+    <script>
+        window.onload = generateCalendar;
+
+        function generateCalendar() {
+            const year = document.getElementById('yearInput').value;
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let html = "";
+
+            for (let m = 0; m < 12; m++) {
+                html += `<h3>${months[m]}</h3><table border="1"><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr><tr>`;
+                
+                let firstDay = new Date(year, m, 1).getDay();
+                let totalDays = new Date(year, m + 1, 0).getDate();
+                
+               
+                for (let i = 0; i < firstDay; i++) {
+                    html += "<td></td>";
+                }
+
+               
+                for (let day = 1; day <= totalDays; day++) {
+                    html += `<td>${day}</td>`;
+                    
+                    
+                    if ((day + firstDay) % 7 === 0) {
+                        html += "</tr><tr>";
+                    }
+                }
+
+                html += "</tr></table>";
+            }
+            document.getElementById('calendarContainer').innerHTML = html;
+        }
+    </script>
+
+</body>
+</html>
+

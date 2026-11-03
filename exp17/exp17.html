@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form Validation using JS</title>
+		<style>
+			body{
+				font family:Arial;
+				text-align:center;
+			}
+			input{
+				padding:8px;
+				margin:8px;
+			}
+			button{
+				padding:8px 20px;
+				background-color:green;
+				color:white;
+				border:none;
+				}
+						
+		</style>
+		
+	</head>
+	<body>
+		<h2>Form Validation </h2>
+		<form onsubmit="return validate ()">
+			Name:<Input type="text" id="name">
+			Mobile number:<Input type="number" id="number">
+			Email:<Input type="email" id="email">	
+			<button type="submit">Submit</button> 
+		</form>
+	</body>
+	<script>
+		function validate()
+		{
+			let name=document.getElementById("name").value;
+			let mobile=document.getElementById("number").value;
+			let email=document.getElementById("email").value;
+			
+			if(name=="")
+			{
+				alert("Enter your name!");
+				return false;
+			}
+			
+			if(mobile=="")
+			{
+				alert("Enter your mobile number!");
+				return false;
+			}
+			if(email=="")
+			{
+				alert("Enter your email!");
+				return false;
+			}
+			
+			if(mobile.length !=10)
+			{
+				alert("Enter a valid mobile number!");
+				return false;
+			}
+			if(!email.includes("@") || !email.includes("."))
+			{
+				alert("Enter a valid email!");
+				return false;
+			}
+			
+			alert("Form submitted");
+			return true;
+		}
+	</script>
+</html>
+					
+						
