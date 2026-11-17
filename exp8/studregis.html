@@ -1,0 +1,94 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<title>Student registration form</title>
+	</head>
+	<style>
+	 body{
+	 	background-color:lightblue;
+	 	}
+	 form{
+	 	width:400px;
+	 	margin:auto;
+	 	padding:15px;	
+	 	background-color:white;
+	 	}
+	 		
+	</style>
+	<body style="border:20px">
+		
+		<center>
+			<h2>STUDENT REGISTRATION FORM</h2>
+			<form onsubmit="alert('Registration Successfull');return false;">
+				<fieldset>
+					<legend>Personal Information</legend>				
+					<label> First Name:</lable>
+					<input type="text"><br><br>
+					
+					<label> Last Name:</lable>
+					<input type="text"><br><br>
+					
+					<label> Date of Birth:</lable>
+					<input type="date"><br><br>
+					
+					<label> Age:</lable>
+					<input type="number"><br><br>
+					
+					<label> Gender:</lable>
+					<input type="radio" name="Gender" value="Male">
+					
+					<input type="radio" name="Gender" value="Female">
+					
+					<input type="radio" name="Gender" value="Others"><br><br>
+				</fieldset>
+				<br>
+				
+				<fieldset>
+					<legend>Contact Information</legend>				
+					<label> Phone number:</lable>
+					<input type="tel"><br><br>
+					
+					<label> Email:</lable>
+					<input type="text"><br><br>
+					
+					<label> Address:</lable>
+					<textarea rows="4" cols="50"></textarea><br><br>
+					
+				</fieldset>
+				<br>
+				
+				<fieldset>
+					<legend>Academic Qualification</legend>				
+					<label> Qualification:</lable><br><br>
+					<select>
+						<option>--SELECT--</option>
+						<option>BCA</option>
+						<option>MCA</option>
+						<option>Btech</option>
+						<option>Mtech</option>
+					</select>
+					
+				</fieldset>
+				<br>
+				<label>Upload Photo:</lable>
+				<input type="file"><br><br>
+				<label> Date of Transfer Certificate:</lable>
+				<input type="date"><br><br>
+				
+				<label> Password:</lable>
+				<input type="password"><br><br>
+				<label> Confirm passowrd:</lable>
+				<input type="password"><br><br>
+				<button type="submit">Submit</button>
+				<button type="reset">Reset</button>
+		</form>
+	</center>
+	</body>							
+				
+				
+				
+				
+					
+			
+			
+</html>
