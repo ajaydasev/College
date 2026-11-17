@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Examination</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: grey;
+			padding: 20px;
+		}
+		.ex {
+			background-color: white;
+			width: 70%;
+			margin: auto;
+			padding: 30px;
+			border-radius: 20px;
+		}
+		h1 {
+			text-align: center;
+			color: red;
+		}
+		button {
+			background-color: green;
+			color: white;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: darkgreen;
+		}
+		#result {
+			margin-top: 20px;
+			font-size: 18px;
+			font-weight: bold;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="ex">
+		<h1>Online Exam</h1>
+		
+		<label for="name"><b>Enter your name:</b></label>
+		<input type="text" id="name" placeholder="Your full name">
+		
+		<h3>Time Left: <span id="timer" style="color: red;">05:00</span></h3>
+		
+		<form id="quiz">
+			<p>1. Which is the most widely used programming language for web development?</p>
+			<input type="radio" name="q1" value="python"> Python<br>
+			<input type="radio" name="q1" value="java"> Java<br>
+			<input type="radio" name="q1" value="javascript"> JavaScript<br>
+			<input type="radio" name="q1" value="cpp"> C++<br>
+
+			<p>2. What does HTML stand for?</p>
+			<input type="radio" name="q2" value="hyper"> Hyper Text Markup Language<br>
+			<input type="radio" name="q2" value="home"> Home Tool Markup Language<br>
+			<input type="radio" name="q2" value="hyperlinks"> Hyperlinks and Text Markup Language<br>
+			<input type="radio" name="q2" value="high"> High-Level Text Machine Language<br>
+
+			<p>3. Which HTML tag is used to create a hyperlink?</p>
+			<input type="radio" name="q3" value="link"> &lt;link&gt;<br>
+			<input type="radio" name="q3" value="a"> &lt;a&gt;<br>
+			<input type="radio" name="q3" value="href"> &lt;href&gt;<br>
+			<input type="radio" name="q3" value="url"> &lt;url&gt;<br>
+
+			<p>4. Which attribute groups radio buttons together so only one can be selected?</p>
+			<input type="radio" name="q4" value="id"> id<br>
+			<input type="radio" name="q4" value="class"> class<br>
+			<input type="radio" name="q4" value="name"> name<br>
+			<input type="radio" name="q4" value="value"> value<br>
+
+			<p>5. Which language is primarily used for styling web pages?</p>
+			<input type="radio" name="q5" value="html"> HTML<br>
+			<input type="radio" name="q5" value="python"> Python<br>
+			<input type="radio" name="q5" value="css"> CSS<br>
+			<input type="radio" name="q5" value="sql"> SQL<br>
+
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+
+		<div id="result"></div>
+	</div>
+
+	<script>
+	
+		const correctAnswers = {
+			q1: "javascript",
+			q2: "hyper",
+			q3: "a",
+			q4: "name",
+			q5: "css"
+		};
+
+		
+		let timeLeft = 300;
+		const timerDisplay = document.getElementById("timer");
+		const quizForm = document.getElementById("quiz");
+
+		const countdown = setInterval(function() {
+			let minutes = Math.floor(timeLeft / 60);
+			let seconds = timeLeft % 60;
+
+			
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			timerDisplay.textContent = minutes + ":" + seconds;
+
+			if (timeLeft <= 0) {
+				clearInterval(countdown);
+				alert("Time is up! Submitting your exam automatically.");
+				gradeExam(true); 
+			}
+			timeLeft--;
+		}, 1000);
+
+		
+		quizForm.addEventListener("submit", function(event) {
+			event.preventDefault(); 
+			gradeExam(false);
+		});
+
+		
+		function gradeExam(isTimeUp) {
+			const studentName = document.getElementById("name").value.trim();
+
+			
+			if (!isTimeUp && studentName === "") {
+				alert("Please enter your name before submitting.");
+				document.getElementById("name").focus();
+				return;
+			}
+
+			let score = 0;
+			const totalQuestions = Object.keys(correctAnswers).length;
+
+			
+			for (let q in correctAnswers) {
+				const selectedOption = document.querySelector(`input[name="${q}"]:checked`);
+
+				
+				if (!isTimeUp && !selectedOption) {
+					alert("Please answer all questions before submitting.");
+					return;
+				}
+
+				if (selectedOption && selectedOption.value === correctAnswers[q]) {
+					score++;
+				}
+			}
+
+	
+			clearInterval(countdown);
+
+		
+			const displayName = studentName || "Student";
+			document.getElementById("result").innerHTML = 
+				`Thank you, ${displayName}! Your Score: ${score} / ${totalQuestions}`;
+
+			
+			const allInputs = document.querySelectorAll("input, button");
+			allInputs.forEach(input => input.disabled = true);
+		}
+	</script>
+
+</body>
+</html>
+
