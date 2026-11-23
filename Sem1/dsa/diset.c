@@ -1,0 +1,49 @@
+#include <stdio.h>
+#define MAX 100
+int parent [MAX];
+void init(int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		parent[i]=i;
+	}
+}
+
+int find(int x)
+{
+	while(x!=parent[x])
+	{
+		x= parent[x];
+	}
+	return x;
+}
+
+void union_set(int x,int y)
+{
+	int rootX = find(x);
+	int rootY = find(y);
+	if(rootX!=rootY)
+	{
+		parent[rootX]=rootY;
+	}
+}
+	
+int con(int x,int y)
+{
+	return find(x)==find(y);
+	
+};
+
+int main()
+{
+	int n=10;
+	init(n);
+	union_set(1,2);
+	union_set(3,4);
+	union_set(2,3);
+	printf("Are 1 and 4 connected ?%s\n",con(1,4)?"YES":"NO");
+	printf("Are 1 and 5 connected ?%s\n",con(1,5)?"YES":"NO");
+	return 0;
+}
+	
+		
